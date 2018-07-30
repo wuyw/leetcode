@@ -19,7 +19,6 @@ public class AddTwoNumbers {
                 next = true;
             }
 
-
             if (listNode == null){
                 listNode = new ListNode(add);
             }else{
@@ -47,7 +46,6 @@ public class AddTwoNumbers {
 
 
 }
-
 
 class ListNode {
       int val;
