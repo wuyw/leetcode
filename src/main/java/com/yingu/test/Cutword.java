@@ -9,11 +9,11 @@ public class Cutword {
 
     public static void main(String[] args) throws Exception {
 
-        FileReader file = new FileReader("/Users/wuyuwu/Desktop/idf.txt");
+        FileReader file = new FileReader("/Users/wuyuwu/Desktop/yingu.txt");
         BufferedReader br = new BufferedReader(file);
 
 
-        FileWriter fw = new FileWriter("/Users/wuyuwu/Desktop/idf_1.txt");
+        FileWriter fw = new FileWriter("data/yingu1.txt");
         BufferedWriter bw = new BufferedWriter(fw);
 
         String line = "";
@@ -28,9 +28,16 @@ public class Cutword {
 //                temp += term.word + " ";
 //            }
 //            bw.write(temp);
-            String[] array = line.split("\\t");
-            bw.write(array[0] + " " + array[1]);
-            bw.newLine();
+//            String[] array = line.split("\\t");
+
+            if (line.contains("Q:")){
+                String[] array = line.split("Q:");
+                bw.write(array[1]);
+                bw.newLine();
+            }else {
+                continue;
+            }
+
         }
 
         //关闭读文件

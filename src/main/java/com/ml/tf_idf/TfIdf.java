@@ -151,12 +151,4 @@ public class TfIdf {
     }
 
 
-    /**
-     * 测试一下
-     * @param args
-     */
-    public static void main(String[] args) {
-
-    }
-
 }
