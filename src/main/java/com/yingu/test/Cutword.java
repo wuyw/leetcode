@@ -1,42 +1,49 @@
 package com.yingu.test;
 
+import com.hankcs.hanlp.HanLP;
+import com.hankcs.hanlp.seg.common.Term;
+import com.hankcs.hanlp.tokenizer.NLPTokenizer;
+import com.hankcs.hanlp.tokenizer.NotionalTokenizer;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.List;
 
 public class Cutword {
 
     public static void main(String[] args) throws Exception {
 
-        FileReader file = new FileReader("/Users/wuyuwu/Desktop/yingu.txt");
+        FileReader file = new FileReader("data/new.txt");
         BufferedReader br = new BufferedReader(file);
 
 
-        FileWriter fw = new FileWriter("data/yingu1.txt");
+        FileWriter fw = new FileWriter("data/new1.txt");
         BufferedWriter bw = new BufferedWriter(fw);
 
         String line = "";
         while ((line=br.readLine())!= null){
             //分词
-//            System.out.println(NLPTokenizer.segment(line)); // “正确”是副形词。
-//
-//            List<Term> list = NLPTokenizer.segment(line);
-//            String temp = "";
-//
-//            for (Term term: list){
-//                temp += term.word + " ";
-//            }
-//            bw.write(temp);
-//            String[] array = line.split("\\t");
+            System.out.println(HanLP.segment(line)); // “正确”是副形词。
 
-            if (line.contains("Q:")){
-                String[] array = line.split("Q:");
-                bw.write(array[1]);
-                bw.newLine();
-            }else {
-                continue;
+            List<Term> list = HanLP.segment(line);
+            String temp = "";
+
+            for (Term term: list){
+                temp += term.word + " ";
             }
+            bw.write(temp);
+            bw.newLine();
+//            String[] array = line.split("\\t");
+//
+//            if (line.contains("Q:")){
+//                String[] array = line.split("Q:");
+//                bw.write(array[1]);
+//                bw.newLine();
+//            }else {
+//                continue;
+//            }
 
         }
 
