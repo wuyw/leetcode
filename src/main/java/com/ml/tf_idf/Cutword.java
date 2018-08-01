@@ -2,6 +2,7 @@ package com.ml.tf_idf;
 
 import com.hankcs.hanlp.HanLP;
 import com.hankcs.hanlp.seg.common.Term;
+import com.hankcs.hanlp.tokenizer.NotionalTokenizer;
 
 import java.io.*;
 import java.util.List;
@@ -31,8 +32,8 @@ public class Cutword {
         String line = "";
         while ((line = bufferedReader.readLine()) != null) {
 
-            List<Term> list =  HanLP.segment(line);
-
+//            List<Term> list =  HanLP.segment(line);
+            List<Term> list =  NotionalTokenizer.segment(line);
             String temp = "";
             for(Term term : list) {
                 temp += term.word + " ";

@@ -25,11 +25,11 @@ public class Word2VecTest {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
-        FileReader file = new FileReader("/Users/wuyuwu/Desktop/1234.csv");
+        FileReader file = new FileReader("csv/test.csv");
         BufferedReader br = new BufferedReader(file);
 
 
-        FileWriter fw = new FileWriter("log/cutword5.txt");
+        FileWriter fw = new FileWriter("log/cutword6.txt");
         BufferedWriter bw = new BufferedWriter(fw);
 
 
@@ -74,11 +74,22 @@ public class Word2VecTest {
                     bw.newLine();
                 }
             }else {
-                System.out.println("---------------------------------");
-                System.out.println(array[0]);
-                System.out.println(jsonObject1.getString("suggestquestion"));
-                System.out.println("---------------------------------");
-                suggest++;
+//                System.out.println("---------------------------------");
+//                System.out.println(array[0]);
+//                System.out.println(jsonObject1.getString("suggestquestion"));
+//                System.out.println("---------------------------------");
+                if (jsonObject1.getString("suggestquestion").contains(array[1])){
+                    suggest++;
+                }else {
+                    System.out.println("---------------------------------");
+                    System.out.println(array[0]);
+                    System.out.println(jsonObject1.getString("suggestquestion"));
+                    System.out.println("---------------------------------");
+                    bw.write(array[0]);
+                    bw.write(",");
+                    bw.write(jsonObject1.getString("suggestquestion"));
+                    bw.newLine();
+                }
             }
 
 
@@ -99,7 +110,12 @@ public class Word2VecTest {
         System.out.println("correct : "+correct);
         correctRate = (correct+suggest)*1.0/count;
 
-        System.out.println(correctRate);
+        System.out.println("correct : "  + correct*1.0/count );
+
+        System.out.println("suggest : "  + suggest*1.0/count );
+
+        System.out.println("correct + suggest: " +correctRate);
+
 
     }
 }
