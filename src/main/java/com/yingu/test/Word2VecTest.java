@@ -29,7 +29,7 @@ public class Word2VecTest {
         BufferedReader br = new BufferedReader(file);
 
 
-        FileWriter fw = new FileWriter("log/cutword6.txt");
+        FileWriter fw = new FileWriter("log/cutword11.txt");
         BufferedWriter bw = new BufferedWriter(fw);
 
 
