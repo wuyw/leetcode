@@ -25,7 +25,7 @@ public class Word2VecTest {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON_UTF8);
 
-        FileReader file = new FileReader("csv/test.csv");
+        FileReader file = new FileReader("csv/test1.csv");
         BufferedReader br = new BufferedReader(file);
 
 

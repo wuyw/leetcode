@@ -105,6 +105,24 @@ public class TfIdf {
         return map1;
     }
 
+    /**
+     *  计算tf-idf的值
+     * @param tf
+     * @param idf
+     * @return
+     */
+    public Map<String,Double> TfIdf(Map<String,Double> tf,Map<String,Double> idf) {
+
+        Map<String,Double> tfidf = new HashMap<String, Double>();
+
+        for (String str : tf.keySet()){
+
+            float compute = tf.get(str).floatValue() * idf.get(str).floatValue();
+            tfidf.put(str,Double.valueOf(compute));
+        }
+
+        return tfidf;
+    }
 
     /**
      * @param sourceFile

@@ -15,11 +15,11 @@ public class Cutword {
 
     public static void main(String[] args) throws Exception {
 
-        FileReader file = new FileReader("data/new.txt");
+        FileReader file = new FileReader("data/sourcefile1.txt");
         BufferedReader br = new BufferedReader(file);
 
 
-        FileWriter fw = new FileWriter("data/new1.txt");
+        FileWriter fw = new FileWriter("data/new2.txt");
         BufferedWriter bw = new BufferedWriter(fw);
 
         String line = "";
