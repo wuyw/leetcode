@@ -22,10 +22,13 @@ public class ReadAndWriteFile {
 
         cutword.segment(sourceFile,targetFile);
 
-        TfIdf tfIdf  =new TfIdf();
-        Map<String,Double>  map = tfIdf.Idf(targetFile);
 
-        tfIdf.writeFile(map,"data/idf.txt");
+        TfIdf tfIdf  =new TfIdf();
+        Map<String,Double> tf = tfIdf.Tf(targetFile);
+        Map<String,Double> idf = tfIdf.Idf(targetFile);
+        Map<String,Double> ti = tfIdf.TfIdf(tf,idf);
+
+        tfIdf.writeFile(ti,"data/tf-idf.txt");
 
     }
 
