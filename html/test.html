@@ -1,0 +1,44 @@
+<script src="./jquery-3.3.1.min.js"></script>
+<script src="./jquery.base64.js"></script>
+
+<audio controls="controls" autobuffer="autobuffer" autoplay="autoplay">
+    <source id="audio" src="" />
+</audio>
+
+<script>
+    console.log("dsajhdgasjhdgasjd ")
+
+    $(function(){
+        var param = "{\"aue\":\"raw\",\"auf\":\"audio/L16;rate=16000\",\"voice_name\":\"xiaoyan\",\"engine_type\":\"intp65\"}"
+        var paramBase64 = $.base64.atob(param, true);
+        console.log("dsajhdgasjhdgasjd ")
+        $.ajax({
+            //请求类型，这里为POST
+            type: 'POST',
+            //你要请求的api的URL
+            url: "http://api.xfyun.cn/v1/service/v1/tts" ,
+            //是否使用缓存
+            cache:false,
+            //数据类型，这里我用的是json
+            dataType: "json",
+            //必要的时候需要用JSON.stringify() 将JSON对象转换成字符串
+            data: {'test':"你好小谷"}, //data: {key:value},
+            //添加额外的请求头
+            headers : {'X-CurTime':"1537253005258",
+                'X-Param':paramBase64,
+                'X-Appid':"5b95de3f",
+                'X-CheckSum':"",
+                'X-Real-Ip':'127.0.0.1',
+                'Content-Type':'application/x-www-form-urlencoded; charset=utf-8'},
+            //请求成功的回调函数
+            success: function(data){
+                console.log("返回值是" + data)
+                $("#audio").src(data)
+            }
+        });
+
+        console.log("执行完成")
+    })
+
+
+</script>

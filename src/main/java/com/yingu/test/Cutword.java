@@ -15,19 +15,18 @@ public class Cutword {
 
     public static void main(String[] args) throws Exception {
 
-        FileReader file = new FileReader("data/sourcefile1.txt");
+        FileReader file = new FileReader("data/sourcefile2.txt");
         BufferedReader br = new BufferedReader(file);
 
 
-        FileWriter fw = new FileWriter("data/new2.txt");
+        FileWriter fw = new FileWriter("data/new5.txt");
         BufferedWriter bw = new BufferedWriter(fw);
 
         String line = "";
         while ((line=br.readLine())!= null){
             //分词
-            System.out.println(HanLP.segment(line)); // “正确”是副形词。
 
-            List<Term> list = HanLP.segment(line);
+            List<Term> list = NLPTokenizer.segment(line);
             String temp = "";
 
             for (Term term: list){
